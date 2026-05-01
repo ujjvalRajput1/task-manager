@@ -15,7 +15,9 @@ exports.register = async (req, res) => {
 
     res.json({ message: "User registered ✅" });
   } catch (err) {
-    res.status(500).json({ error: err.message });
+  console.log("ERROR:", err);   // 👈 terminal में full error दिखेगा
+  res.status(500).json({ error: err });
+
   }
 };
 
@@ -23,7 +25,10 @@ exports.login = async (req, res) => {
   const { email, password } = req.body;
 
   try {
-    const [rows] = await db.query("SELECT * FROM users WHERE email = ?", [email]);
+    const [rows] = await db.query(
+      "SELECT * FROM users WHERE email = ?",
+      [email]
+    );
 
     if (rows.length === 0) {
       return res.status(400).json({ message: "User not found" });
@@ -40,7 +45,9 @@ exports.login = async (req, res) => {
     const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET);
 
     res.json({ token });
+
   } catch (err) {
+    console.log("ERROR:", err);
     res.status(500).json({ error: err.message });
   }
 };

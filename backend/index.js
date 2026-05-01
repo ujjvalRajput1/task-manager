@@ -1,25 +1,30 @@
-require("dotenv").config();
-
+console.log("🔥 THIS FILE IS RUNNING");
 const express = require("express");
-const cors = require("cors");
-
+const dotenv = require("dotenv");
 const authRoutes = require("./route/authroute");
-const taskRoutes = require("./route/taskroute");
+
+dotenv.config();
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.send("🚀 Server running (Production Ready)");
+// ✅ ADD THIS
+app.get("/test", (req, res) => {
+  res.send("Test route working ✅");
 });
 
+// ✅ IMPORTANT
 app.use("/api/auth", authRoutes);
-app.use("/api/task", taskRoutes);
+
+app.get("/", (req, res) => {
+  res.send("API is running 🚀");
+});
 
 const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-  console.log(`✅ Server running on port ${PORT}`);
+  console.log(`Server running on port ${PORT}`);
 });
+const cors = require("cors");
+app.use(cors());
