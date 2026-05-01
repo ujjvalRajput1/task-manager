@@ -15,8 +15,8 @@ app.get("/", (req, res) => {
   res.send("🚀 Server running (Production Ready)");
 });
 
-app.use("/api/authMiddleware", authRoutes);
-app.use("/api/taskController", taskRoutes);
+app.use("/api/auth", authRoutes);
+app.use("/api/task", taskRoutes);
 
 const PORT = process.env.PORT || 5000;
 
