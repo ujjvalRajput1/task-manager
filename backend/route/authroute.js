@@ -7,6 +7,3 @@ router.post("/register", register);
 router.post("/login", login);
 
 module.exports = router;
-console.log(register);
-const { register } = require("../controllers/authController");
-router.post("/register", register);
