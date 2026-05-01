@@ -1,6 +1,6 @@
-const db = require("../db");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+const db = require("../db");          // ✅ correct path
+const bcrypt = require("bcryptjs");  // ✅ correct
+const jwt = require("jsonwebtoken"); // ✅ correct
 
 exports.register = async (req, res) => {
   const { name, email, password } = req.body;
